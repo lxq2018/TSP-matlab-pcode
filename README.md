@@ -83,11 +83,17 @@
  
   Example:
   load AdjMat A
+  
   [p,d,q] = TSP(A,'s',50,'a','3n')
+  
   [p,d,q] = TSP(A,'s',50,'a','MTZ')
+  
   [p,d,q] = TSP(A,'s',50,'a','MTZ','m',3)
+  
   [p,d,q] = TSP(A,'s',50,'a','GG')
+  
   [p,d,q] = TSP(A,'s',50,'a','GG', 'm',3)
+  
   [p,d,q] = TSP(A,'s',50,'a','GG', 'm',3,'U',20)
  
  
