@@ -1,4 +1,4 @@
-# TSP-matlab-p-code-
+# TSP-matlab-pcode
 
   TSP: finds a solution of the Traveling Salesmen Problem based
        on the so-called 3-neighbourhood method [local optimal]
