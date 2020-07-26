@@ -82,6 +82,7 @@
  
  
   Example:
+  
   load AdjMat A
   
   [p,d,q] = TSP(A,'s',50,'a','3n')
