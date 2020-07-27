@@ -27,13 +27,19 @@
  
   L = minimal number of sites that one salesman travels, with the paired
       formation of 'L' and its value[taking 1 by default].
-  Note: here is a bug, so 'L' is currently not recommeded to use!!!
+      NOTE: here is a bug, so 'L' is currently not recommeded to use!!!
  
   U = maximal number of sites that one salesman travels, with the paired
       formation of 'U' and its value [taking n-m by default].
  
   a = algorithm used, with the paired formation of 'a' and its value
       [taken as '3n' by default (the other two are 'MTZ' and 'GG')].
+ 
+  V = velocity that every salesman travels (the same), with the paired
+      formation of 'V' and its value [taking 1 by default].
+ 
+  t = a time vector denoting how long the salesman stays, with the paired
+      formation of 't' and its value [taking zeros(1,n) by default].
  
  
   Output:
@@ -50,6 +56,8 @@
       - other cases: a numerical value.
  
   q = (nearly) optimal path(s) in the complete graph, similar to p.
+ 
+  K = stay-or-not logical vector(s), similar to p.
  
  
   For the 3-neighbourhood method:
@@ -85,17 +93,17 @@
   
   load AdjMat A
   
-  [p,d,q] = TSP(A,'s',50,'a','3n')
+  [p,d,q,K] = TSP(A,'s',50,'a','3n')
   
-  [p,d,q] = TSP(A,'s',50,'a','MTZ')
+  [p,d,q,K] = TSP(A,'s',50,'a','MTZ')
   
-  [p,d,q] = TSP(A,'s',50,'a','MTZ','m',3)
+  [p,d,q,K] = TSP(A,'s',50,'a','MTZ','m',3)
   
-  [p,d,q] = TSP(A,'s',50,'a','GG')
+  [p,d,q,K] = TSP(A,'s',50,'a','GG')
   
-  [p,d,q] = TSP(A,'s',50,'a','GG', 'm',3)
+  [p,d,q,K] = TSP(A,'s',50,'a','GG', 'm',3)
   
-  [p,d,q] = TSP(A,'s',50,'a','GG', 'm',3,'U',20)
+  [p,d,q,K] = TSP(A,'s',50,'a','GG', 'm',3,'U',20)
  
  
   See also graphshortestpath and intlinprog.
