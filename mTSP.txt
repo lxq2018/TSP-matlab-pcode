@@ -1,0 +1,99 @@
+  mTSP: heuristic algorithm used to find a solution of the multiple
+        Traveling Salesmen Problem (with lower and upper bounds for
+        every salesman's distance or time travelled) based on the
+        modified Christofides-Mingozzi-Toth (CMT) model, as well as
+        the Gavish-Graves (GG) model and the powerful "intlinprog"
+        function of MATLAB.
+ 
+  -------------------------------------------------------------------------
+ 
+  Input (required):
+ 
+  A = weighted adjacent matrix, in which A(i,j) denotes the direct weight
+      between i-th and j-th sites in the original graph.
+ 
+  r = root (starting) site.
+ 
+  -------------------------------------------------------------------------
+ 
+  Input (optional):
+ 
+  V = velocity that every salesman travels (the same), with the paired
+      formation of 'V' and its value [taking 1 by default].
+ 
+  t = a time vector denoting how long the salesman stays, with the paired
+      formation of 't' and its value [taking zeros(1,n) by default].
+ 
+  I = a vector of sites to be travelled, taking the paired formation
+      of 'I' and its value [all other than r by default].
+ 
+  L = lower bound of distance or time travelled for each salesman, taking
+      the paired formation of 'L' and its value [0 by default].
+ 
+  U = upper bound of distance or time travelled for each salesman, taking
+      the paired formation of 'U' and its value [inf by default].
+ 
+  -------------------------------------------------------------------------
+ 
+  Output:
+ 
+  The 1st varargout contains the results of the preliminary search, while
+  the 2nd struct contains the results of the optimized search, as follows:
+ 
+  p = (nearly) optimal path(s) in the original graph:
+      - in the case of the 'GG' algorithm with m > 1, p is a cell
+        of m paths, each of which is for one saleman, in the formation
+        of a vector of sites, starting from and ending at s.
+      - other cases: a vector of sites, starting from and ending at s.
+ 
+  T = total time travelled associated with p:
+      - in the case of the 'GG' algorithm with m > 1, T is a vector
+        of m times, each of which is for one saleman.
+      - other cases: a numerical value.
+ 
+  q = (nearly) optimal path(s) in the complete graph, similar to p.
+ 
+  K = stay-or-not logical vector(s), similar to p.
+ 
+  d = total distance travelled associated with p:
+      - in the case of the 'GG' algorithm with m > 1, d is a vector
+        of m distances, each of which is for one saleman.
+      - other cases: a numerical value.
+ 
+  g = a cell of groups, not including the root node r.
+ 
+  m = number of groups.
+ 
+  -------------------------------------------------------------------------
+ 
+  GG model:
+  see "Gavish, B., Graves, S.C. (1978).
+       The travelling salesman problem and related problems".
+ 
+  CMT model:
+  see "Christofides N, Mingozzi A, Toth P. (1981).
+       Exact algorithms for the vehicle routing problem, based on
+       spanning tree and shortest path relaxations.
+       Mathematical Programming 20: 255-282.
+ 
+  -------------------------------------------------------------------------
+ 
+  Written by Xu-Qing Liu (liuxuqing688@163.com) // August 03, 2020
+ 
+  -------------------------------------------------------------------------
+ 
+  Example:
+ 
+  load AdjMat A
+  r = 50;
+  V = 35;
+  t = [ones(1,35) ones(1,14)*2 0 2 2 2];
+  I = [1:49 51:53];
+  L = 0;
+  U = 6.4286;
+  [R1,R2] = mTSP(A,r,'V',V,'t',t,'I',I,'L',L,'U',U)
+ 
+  -------------------------------------------------------------------------
+ 
+  See also TSP, graphshortestpath, and intlinprog.
+  
